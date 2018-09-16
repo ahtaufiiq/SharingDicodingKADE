@@ -2,51 +2,47 @@ package com.example.ahmad.footbalmatch.view.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v7.widget.LinearLayoutManager
-import android.view.MenuItem
-import android.view.View
 import com.example.ahmad.footbalmatch.R
-import com.example.ahmad.footbalmatch.model.response.Event
+import com.example.ahmad.footbalmatch.R.id.navigation_last_match
+import com.example.ahmad.footbalmatch.R.id.navigation_next_match
+import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(),MainContract.View {
-    private var matchLists : MutableList<Event> = mutableListOf()
+class MainActivity : AppCompatActivity() {
 
-    override fun setDataLastMatch(matchList: List<Event>) {
-        matchLists.clear()
-        matchLists.addAll(matchList)
-        rv_match.layoutManager = LinearLayoutManager(this)
-        rv_match.adapter = MatchAdapter(this, matchLists)
-
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-    }
-
-    lateinit var mPresenter : MainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mPresenter= MainPresenter(this)
-        mPresenter.getLastMatch()
-    }
+        navigation.setOnNavigationItemSelectedListener{ item ->
+            when (item.itemId) {
+                navigation_next_match -> {
+                    loadTeamsFragment(savedInstanceState)
+                }
+                navigation_last_match -> {
+                    loadFavoritesFragment(savedInstanceState)
+                }
 
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        val ft = supportFragmentManager.beginTransaction()
-
-        when (item.itemId) {
-            R.id.navigation_next_match -> {
-                mPresenter.getNextMatch()
-                return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_last_match -> {
-                mPresenter.getLastMatch()
-                return@OnNavigationItemSelectedListener true
-            }
-
+            true
         }
-        false
+        navigation.selectedItemId = R.id.navigation_last_match
     }
-
+    private fun loadTeamsFragment(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.main_container, MatchFragment(), MatchFragment::class.java.simpleName)
+                    .commit()
+        }
+    }
+    private fun loadFavoritesFragment(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.main_container, FavoriteFragment(), FavoriteFragment::class.java.simpleName)
+                    .commit()
+        }
+    }
 }
