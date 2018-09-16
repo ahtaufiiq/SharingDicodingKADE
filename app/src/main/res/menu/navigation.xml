@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_last_match"
+        android:icon="@drawable/ic_prev_match"
+        android:title="Prev. Match" />
+
+    <item
+        android:id="@+id/navigation_next_match"
+        android:icon="@drawable/ic_next_match"
+        android:title="Next Match" />
+
+</menu>
