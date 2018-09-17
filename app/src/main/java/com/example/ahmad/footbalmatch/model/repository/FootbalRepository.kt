@@ -1,5 +1,6 @@
 package com.example.ahmad.footbalmatch.model.repository
 
+import com.example.ahmad.footbalmatch.model.response.Event
 import com.example.ahmad.footbalmatch.model.response.Events
 import com.example.ahmad.footbalmatch.model.response.Teams
 import io.reactivex.Observable

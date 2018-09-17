@@ -26,4 +26,13 @@ class DetailPresenter(val mView: DetailContract.View) : DetailContract.Presenter
                     mView.setLogoAwayTeam(it.teams[0])
                 })
     }
+
+    override fun getEvent(id: String) {
+        compositeDisposable.add(FootballRepositoryImpl().getEventById(id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe {
+                    mView.setDataEvent(it.events[0])
+                })
+    }
 }

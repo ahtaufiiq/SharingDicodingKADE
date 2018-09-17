@@ -1,12 +1,19 @@
 package com.example.ahmad.footbalmatch.model.local
 
-data class Favorite(val id: Long?, val teamId: String?, val teamName: String?, val teamBadge: String?) {
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Favorite(val id: Long?, val idEvent: String,val dateEvent: String?, val strHomeTeam: String?, val intHomeScore: String?, val intAwayScore: String?, val strAwayTeam: String?):Parcelable {
 
     companion object {
         const val TABLE_FAVORITE: String = "TABLE_FAVORITE"
-        const val ID: String = "ID_"
-        const val TEAM_ID: String = "TEAM_ID"
-        const val TEAM_NAME: String = "TEAM_NAME"
-        const val TEAM_BADGE: String = "TEAM_BADGE"
+        const val ID: String = "ID"
+        const val ID_EVENT: String = "ID_EVENT"
+        const val DATE_EVENT: String = "DATE_EVENT"
+        const val HOME_TEAM: String = "HOME_TEAM"
+        const val HOME_SCORE: String = "HOME_SCORE"
+        const val AWAY_SCORE: String = "AWAY_SCORE"
+        const val AWAY_TEAM: String = "AWAY_TEAM"
     }
 }

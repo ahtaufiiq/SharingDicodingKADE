@@ -36,11 +36,17 @@ class FavoriteEventsAdapter(val context: Context?, val eventList: List<Favorite>
     inner class ClubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(event: Favorite) {
 
-            itemView.tv_home_team.text = event.teamBadge
-            itemView.score_team_home.text = event.teamId
-            itemView.score_team_away.text = event.teamId
-            itemView.away_team.text = event.teamName
+            itemView.tv_tanggal.text = DateHelper.reformatStringDate(event.dateEvent.toString(), DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
+            itemView.tv_home_team.text = event.strHomeTeam
+            itemView.score_team_home.text = event.intHomeScore
+            itemView.score_team_away.text = event.intAwayScore
+            itemView.away_team.text = event.strAwayTeam
 
+            Log.d("asdsad",event.idEvent)
+
+            itemView.setOnClickListener {
+                itemView.context.startActivity<DetailActivity>("favorite" to event)
+            }
         }
     }
 

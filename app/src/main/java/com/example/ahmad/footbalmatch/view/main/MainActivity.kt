@@ -3,8 +3,7 @@ package com.example.ahmad.footbalmatch.view.main
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.ahmad.footbalmatch.R
-import com.example.ahmad.footbalmatch.R.id.navigation_last_match
-import com.example.ahmad.footbalmatch.R.id.navigation_next_match
+import com.example.ahmad.footbalmatch.R.id.*
 import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,10 +17,13 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener{ item ->
             when (item.itemId) {
                 navigation_next_match -> {
-                    loadTeamsFragment(savedInstanceState)
+                    loadMatchFragment(savedInstanceState)
+                }
+                navigation_favorite -> {
+                    loadFavoritesFragment(savedInstanceState)
                 }
                 navigation_last_match -> {
-                    loadFavoritesFragment(savedInstanceState)
+                    loadLastMatchFragment(savedInstanceState)
                 }
 
             }
@@ -29,11 +31,19 @@ class MainActivity : AppCompatActivity() {
         }
         navigation.selectedItemId = R.id.navigation_last_match
     }
-    private fun loadTeamsFragment(savedInstanceState: Bundle?) {
+    private fun loadMatchFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.main_container, MatchFragment(), MatchFragment::class.java.simpleName)
+                    .commit()
+        }
+    }
+    private fun loadLastMatchFragment(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.main_container, LastMatchFragment(), LastMatchFragment::class.java.simpleName)
                     .commit()
         }
     }

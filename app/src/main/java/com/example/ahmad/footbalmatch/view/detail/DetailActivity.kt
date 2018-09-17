@@ -18,9 +18,9 @@ import com.example.ahmad.footbalmatch.model.DateHelper
 import com.example.ahmad.footbalmatch.model.local.Favorite
 import com.example.ahmad.footbalmatch.model.local.database
 import com.example.ahmad.footbalmatch.model.response.Event
+import com.example.ahmad.footbalmatch.model.response.Events
 import com.example.ahmad.footbalmatch.model.response.Team
 import kotlinx.android.synthetic.main.activity_detail.*
-import org.jetbrains.anko.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
 import org.jetbrains.anko.db.insert
@@ -29,6 +29,7 @@ import org.jetbrains.anko.db.select
 class DetailActivity : AppCompatActivity(), DetailContract.View {
 
     private lateinit var event: Event
+    private lateinit var favorite: Favorite
     private var menuItem: Menu? = null
     private var isFavorite: Boolean = false
 
@@ -41,44 +42,49 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         mPresenter = DetailPresenter(this)
 
 
-        event = intent.getParcelableExtra("event")
+        if (intent.getParcelableExtra<Event>("event")!=null){
+            event = intent.getParcelableExtra("event")
+            id=event.idEvent
+            setDataEvent(event)
+        }else if (intent.getParcelableExtra<Favorite>("favorite")!=null){
+            favorite=intent.getParcelableExtra<Favorite>("favorite")
+            id=favorite.idEvent
+            mPresenter.getEvent(id)
 
-        id=event.idEvent
+        }
+
         favoriteState()
 
-        mPresenter.getLogoAwayTeam(event.idAwayTeam)
-        mPresenter.getLogoHomeTeam(event.idHomeTeam)
-        setData(event)
-    }
-
-    private fun setData(event: Event) {
-
-        tv_tanggal_detail.text = DateHelper.reformatStringDate(event.dateEvent.toString(), DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
-        tv_home_team_detail.text = event.strHomeTeam
-        score_team_home_detail.text = event.intHomeScore
-        tv_away_team_detail.text = event.strAwayTeam
-        score_team_away_detail.text = event.intAwayScore
-
-        goal_home.text = event.strHomeGoalDetails ?: "Data Belum Tersedia"
-        goal_away.text = event.strAwayGoalDetails ?: "Data Belum Tersedia"
-
-        shots_home.text = event.intHomeShots ?: "Data Belum Tersedia"
-        shots_away.text = event.intAwayShots ?: "Data Belum Tersedia"
-
-        gk_home.text = event.strHomeLineupGoalkeeper ?: "Data Belum Tersedia"
-        gk_away.text = event.strAwayLineupGoalkeeper ?: "Data Belum Tersedia"
-
-        defense_home.text = event.strHomeLineupDefense ?: "Data Belum Tersedia"
-        defense_away.text = event.strAwayLineupDefense ?: "Data Belum Tersedia"
-
-        midfield_home.text = event.strHomeLineupMidfield ?: "Data Belum Tersedia"
-        midfield_away.text = event.strAwayLineupMidfield ?: "Data Belum Tersedia"
-
-        forward_home.text = event.strHomeLineupForward ?: "Data Belum Tersedia"
-        forward_away.text = event.strAwayLineupForward ?: "Data Belum Tersedia"
 
     }
 
+    override fun setDataEvent(team: Event) {
+        tv_tanggal_detail.text = DateHelper.reformatStringDate(team.dateEvent.toString(), DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
+        tv_home_team_detail.text = team.strHomeTeam
+        score_team_home_detail.text = team.intHomeScore
+        tv_away_team_detail.text = team.strAwayTeam
+        score_team_away_detail.text = team.intAwayScore
+
+        goal_home.text = team.strHomeGoalDetails ?: "Data Belum Tersedia"
+        goal_away.text = team.strAwayGoalDetails ?: "Data Belum Tersedia"
+
+        shots_home.text = team.intHomeShots ?: "Data Belum Tersedia"
+        shots_away.text = team.intAwayShots ?: "Data Belum Tersedia"
+
+        gk_home.text = team.strHomeLineupGoalkeeper ?: "Data Belum Tersedia"
+        gk_away.text = team.strAwayLineupGoalkeeper ?: "Data Belum Tersedia"
+
+        defense_home.text = team.strHomeLineupDefense ?: "Data Belum Tersedia"
+        defense_away.text = team.strAwayLineupDefense ?: "Data Belum Tersedia"
+
+        midfield_home.text = team.strHomeLineupMidfield ?: "Data Belum Tersedia"
+        midfield_away.text = team.strAwayLineupMidfield ?: "Data Belum Tersedia"
+
+        forward_home.text = team.strHomeLineupForward ?: "Data Belum Tersedia"
+        forward_away.text = team.strAwayLineupForward ?: "Data Belum Tersedia"
+        mPresenter.getLogoAwayTeam(team.idAwayTeam)
+        mPresenter.getLogoHomeTeam(team.idHomeTeam)
+    }
     override fun setLogoAwayTeam(team: Team) {
         Glide.with(applicationContext)
                 .load(team.strTeamBadge)
@@ -122,9 +128,13 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         try {
             database.use {
                 insert(Favorite.TABLE_FAVORITE,
-                        Favorite.TEAM_ID to id,
-                        Favorite.TEAM_NAME to event.strAwayTeam,
-                        Favorite.TEAM_BADGE to event.strHomeTeam
+                        Favorite.ID to id,
+                        Favorite.ID_EVENT to event.idEvent,
+                        Favorite.DATE_EVENT to event.dateEvent,
+                        Favorite.HOME_TEAM to event.strHomeTeam,
+                        Favorite.HOME_SCORE to event.intHomeScore,
+                        Favorite.AWAY_TEAM to event.strAwayTeam,
+                        Favorite.AWAY_SCORE to event.intAwayScore
                 )
             }
         } catch (e: SQLiteConstraintException) {
@@ -135,7 +145,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     private fun favoriteState(){
         database.use {
             val result = select(Favorite.TABLE_FAVORITE)
-                    .whereArgs("(TEAM_ID = {id})",
+                    .whereArgs("(ID_EVENT = {id})",
                             "id" to id)
             val favorite = result.parseList(classParser<Favorite>())
             isFavorite = !favorite.isEmpty()
@@ -144,7 +154,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     private fun removeFromFavorite(){
         try {
             database.use {
-                delete(Favorite.TABLE_FAVORITE, "(TEAM_ID = {id})",
+                delete(Favorite.TABLE_FAVORITE, "(ID_EVENT = {id})",
                         "id" to id)
             }
         } catch (e: SQLiteConstraintException){

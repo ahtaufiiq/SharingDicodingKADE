@@ -29,9 +29,8 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class MatchFragment : Fragment(),MainContract.View {
+class LastMatchFragment : Fragment(),MainContract.View {
     private var matchLists : MutableList<Event> = mutableListOf()
-    private var favorites: MutableList<Favorite> = mutableListOf()
     private lateinit var adapter: FavoriteEventsAdapter
 
     lateinit var mPresenter : MainPresenter
@@ -40,7 +39,7 @@ class MatchFragment : Fragment(),MainContract.View {
         // Inflate the layout for this fragment
         var view= inflater.inflate(R.layout.fragment_match, container, false)
         mPresenter= MainPresenter(this)
-        mPresenter.getNextMatch()
+        mPresenter.getLastMatch()
         return view
     }
     override fun setDataLastMatch(matchList: List<Event>) {
