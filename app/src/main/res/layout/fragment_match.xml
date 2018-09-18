@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.main.nextMatch.MatchFragment">
+    tools:context=".view.main.match.nextMatch.NextMatchFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_match"
+        android:layout_marginLeft="@dimen/margin_24"
+        android:layout_marginRight="@dimen/margin_24"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

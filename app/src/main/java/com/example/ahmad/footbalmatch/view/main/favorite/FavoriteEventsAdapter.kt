@@ -8,22 +8,23 @@ import android.view.ViewGroup
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.DateHelper
 import com.example.ahmad.footbalmatch.data.local.Favorite
-import com.example.ahmad.footbalmatch.view.detail.DetailActivity
+import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailActivity
+import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailTeamActivity
 import kotlinx.android.synthetic.main.card_match.view.*
 import org.jetbrains.anko.startActivity
 
-class FavoriteEventsAdapter(val context: Context?, val eventList: List<Favorite>) : RecyclerView.Adapter<FavoriteEventsAdapter.ClubViewHolder>() {
+class FavoriteEventsAdapter(val context: Context?, private val matchList: List<Favorite>) : RecyclerView.Adapter<FavoriteEventsAdapter.ClubViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubViewHolder {
         return ClubViewHolder(LayoutInflater.from(context).inflate(R.layout.card_match, parent, false))
     }
 
-    override fun getItemCount(): Int = eventList.size
+    override fun getItemCount(): Int = matchList.size
 
 
     override fun onBindViewHolder(holder: ClubViewHolder, position: Int) {
-        holder.bind(eventList[position])
+        holder.bind(matchList[position])
     }
 
     inner class ClubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,7 +38,7 @@ class FavoriteEventsAdapter(val context: Context?, val eventList: List<Favorite>
 
 
             itemView.setOnClickListener {
-                itemView.context.startActivity<DetailActivity>("favorite" to event)
+                itemView.context.startActivity<DetailActivity>("event" to event.idEvent)
             }
         }
     }

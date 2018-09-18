@@ -1,25 +1,23 @@
 package com.example.ahmad.footbalmatch.view.main
 
-import android.support.test.espresso.Espresso
-import android.support.test.espresso.action.ViewActions
-import android.support.test.espresso.assertion.ViewAssertions
-import android.support.test.espresso.contrib.RecyclerViewActions
-import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.runner.AndroidJUnit4
-import org.junit.Before
+import android.support.test.espresso.Espresso.onView
+import android.support.test.espresso.Espresso.pressBack
+import android.support.test.espresso.action.ViewActions.click
+import android.support.test.espresso.assertion.ViewAssertions.matches
+import android.support.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
+import android.support.test.espresso.contrib.RecyclerViewActions.scrollToPosition
+import android.support.test.espresso.matcher.ViewMatchers.withId
+import android.support.test.espresso.matcher.ViewMatchers.isDisplayed
 import android.support.test.rule.ActivityTestRule
+import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
 import com.example.ahmad.footbalmatch.R.id.*
-import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.fragment_match.*
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
-
 
 
     @Rule
@@ -29,64 +27,79 @@ class MainActivityTest {
     @Test
     fun mainActivityTest() {
 
-        delay()
-        Espresso.onView(ViewMatchers.withId(rv_match))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(ViewMatchers.withId(rv_match)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
-        Espresso.onView(ViewMatchers.withId(rv_match)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(10, ViewActions.click()))
+        //Last Match
+        sleep_long()
 
-        Espresso.onView(ViewMatchers.withId(img_team_away)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(ViewMatchers.withId(img_team_home)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(rv_match))
+                .check(matches(isDisplayed()))
+        onView(withId(rv_match))
+                .perform(scrollToPosition<RecyclerView.ViewHolder>(14))
+        onView(withId(rv_match))
+                .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(14,
+                        click()))
+        sleep_short()
 
-        Espresso.pressBack()
-        delay()
+        onView(withId(img_team_away))
+                .check(matches(isDisplayed()))
+        onView(withId(img_team_home))
+                .check(matches(isDisplayed()))
+        onView(withId(add_to_favorite))
+                .perform(click())
+        pressBack()
 
-        Espresso.onView(ViewMatchers.withId(navigation_next_match)).perform(ViewActions.click())
-        delay()
-        Espresso.onView(ViewMatchers.withId(rv_match))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        sleep_long()
 
-        Espresso.onView(ViewMatchers.withId(rv_match))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(ViewMatchers.withId(rv_match)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(10))
-        Espresso.onView(ViewMatchers.withId(rv_match)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(10, ViewActions.click()))
+        //Next Match
+        onView(withId(navigation_next_match))
+                .perform(click())
 
-        Espresso.onView(ViewMatchers.withId(img_team_away)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(ViewMatchers.withId(img_team_home)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        sleep_long()
 
-        Espresso.onView(ViewMatchers.withId(add_to_favorite)).perform(ViewActions.click())
+        onView(withId(rv_match))
+                .check(matches(isDisplayed()))
+        onView(withId(rv_match))
+                .perform(scrollToPosition<RecyclerView.ViewHolder>(5))
+        onView(withId(rv_match))
+                .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(5,
+                        click()))
+        sleep_short()
+        onView(withId(img_team_away))
+                .check(matches(isDisplayed()))
+        onView(withId(img_team_home))
+                .check(matches(isDisplayed()))
+        onView(withId(add_to_favorite))
+                .perform(click())
+        pressBack()
 
-        Espresso.pressBack()
-        delay()
+        sleep_long()
+        //Favorite
+        onView(withId(navigation_favorite))
+                .perform(click())
 
-        Espresso.onView(ViewMatchers.withId(navigation_favorite)).perform(ViewActions.click())
+        sleep_long()
 
-        delay()
+        onView(withId(rv_favorite))
+                .check(matches(isDisplayed()))
+        onView(withId(rv_favorite)).perform(
+                actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
+                        click()))
+        sleep_short()
+        onView(withId(img_team_away))
+                .check(matches(isDisplayed()))
+        onView(withId(img_team_home))
+                .check(matches(isDisplayed()))
+        onView(withId(add_to_favorite))
+                .perform(click())
+        pressBack()
 
-        Espresso.onView(ViewMatchers.withId(rv_favorite))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        sleep_long()
 
-        Espresso.onView(ViewMatchers.withId(rv_favorite)).perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(0))
-        Espresso.onView(ViewMatchers.withId(rv_favorite)).perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, ViewActions.click()))
-
-        Espresso.onView(ViewMatchers.withId(img_team_away)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        Espresso.onView(ViewMatchers.withId(img_team_home)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-
-        Espresso.onView(ViewMatchers.withId(add_to_favorite)).perform(ViewActions.click())
-
-        Espresso.pressBack()
-
-        delay()
     }
 
-    private fun delay(){
-        try {
-            Thread.sleep(2000)
-        } catch (e: InterruptedException) {
-            e.printStackTrace()
-        }
+    private fun sleep_long() {
+        Thread.sleep(3000)
+    }
+    private fun sleep_short() {
+        Thread.sleep(1000)
     }
 }

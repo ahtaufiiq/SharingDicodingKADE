@@ -3,7 +3,7 @@ package com.example.ahmad.footbalmatch.view.main
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import com.example.ahmad.footbalmatch.data.response.Event
 import com.example.ahmad.footbalmatch.data.response.Events
-import com.example.ahmad.footbalmatch.view.main.nextMatch.MainPresenter
+import com.example.ahmad.footbalmatch.view.main.match.nextMatch.NextMatchPresenter
 import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
@@ -15,7 +15,7 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
-class MainPresenterTest {
+class NextMatchPresenterTest {
     @Mock
     private
     lateinit var mView: MainContract.View
@@ -25,11 +25,11 @@ class MainPresenterTest {
 
     @Mock
     private
-    lateinit var mPresenter: MainPresenter
+    lateinit var mPresenter: NextMatchPresenter
 
-    lateinit var match : Events
+    private lateinit var match: Events
 
-    lateinit var footballMatch: Observable<Events>
+    private lateinit var matchList: Observable<Events>
 
     private val event = mutableListOf<Event>()
 
@@ -40,15 +40,16 @@ class MainPresenterTest {
         MockitoAnnotations.initMocks(this)
 
         match = Events(event)
-        footballMatch = Observable.just(match)
-        mPresenter = MainPresenter(mView, footballRepositoryImpl)
+        matchList = Observable.just(match)
+        mPresenter = NextMatchPresenter(mView, footballRepositoryImpl)
 
-        `when`(footballRepositoryImpl.getNextMatch("4328")).thenReturn(footballMatch)
+        `when`(footballRepositoryImpl.getNextMatch("4328")).thenReturn(matchList)
     }
 
     @Test
     fun getNextMatch_shouldSuccess() {
         mPresenter.getMatch()
+        Thread.sleep(2000)
         verify(mView).setDataMatch(event)
     }
 }

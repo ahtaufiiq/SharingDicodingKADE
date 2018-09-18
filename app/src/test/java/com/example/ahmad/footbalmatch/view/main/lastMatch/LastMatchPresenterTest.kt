@@ -4,13 +4,12 @@ import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import com.example.ahmad.footbalmatch.data.response.Event
 import com.example.ahmad.footbalmatch.data.response.Events
 import com.example.ahmad.footbalmatch.view.main.MainContract
-import com.example.ahmad.footbalmatch.view.main.nextMatch.MainPresenter
+import com.example.ahmad.footbalmatch.view.main.match.lastMatch.LastMatchPresenter
 import io.reactivex.Observable
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
 
-import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
@@ -29,9 +28,9 @@ class LastMatchPresenterTest {
     private
     lateinit var mPresenter: LastMatchPresenter
 
-    lateinit var match : Events
+    lateinit var match: Events
 
-    lateinit var footballMatch: Observable<Events>
+    lateinit var matchList: Observable<Events>
 
     private val event = mutableListOf<Event>()
 
@@ -42,15 +41,16 @@ class LastMatchPresenterTest {
         MockitoAnnotations.initMocks(this)
 
         match = Events(event)
-        footballMatch = Observable.just(match)
+        matchList = Observable.just(match)
         mPresenter = LastMatchPresenter(mView, footballRepositoryImpl)
 
-        Mockito.`when`(footballRepositoryImpl.getLastMatch("4328")).thenReturn(footballMatch)
+        Mockito.`when`(footballRepositoryImpl.getLastMatch("4328")).thenReturn(matchList)
     }
 
     @Test
     fun getLastMatch_shouldSuccess() {
         mPresenter.getMatch()
+        Thread.sleep(2000)
         Mockito.verify(mView).setDataMatch(event)
     }
 }

@@ -1,49 +1,33 @@
 package com.example.ahmad.footbalmatch.view.main.favorite
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v4.view.ViewPager
+import android.view.*
 import com.example.ahmad.footbalmatch.R
-import com.example.ahmad.footbalmatch.data.local.Favorite
-import com.example.ahmad.footbalmatch.data.local.database
-import kotlinx.android.synthetic.main.fragment_favorite.*
-import org.jetbrains.anko.db.classParser
-import org.jetbrains.anko.db.select
+import com.example.ahmad.footbalmatch.data.ViewPagerAdapter
 
 
-class FavoriteFragment : Fragment() {
-    private lateinit var listEvent: RecyclerView
-    private var favorites: MutableList<Favorite> = mutableListOf()
-    private lateinit var adapter: FavoriteEventsAdapter
+class  FavoriteFragment : Fragment() {
+
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_favorite, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment_matches, container, false)
     }
 
-    override fun onStart() {
-        showFavorite()
-
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val vPager = view.findViewById<ViewPager>(R.id.viewpager)
+        val tabs = view.findViewById<TabLayout>(R.id.tabs)
+        val adapter = ViewPagerAdapter(childFragmentManager)
+        setHasOptionsMenu(true)
+        adapter.populateFragment(FavoriteMatch(), "Favorite Match")
+        adapter.populateFragment(FavoriteTeamFragment(), "Favorite Team")
+        vPager.adapter = adapter
+        tabs.setupWithViewPager(vPager)
     }
 
-    private fun showFavorite() {
-        context?.database?.use {
-            val result = select(Favorite.TABLE_FAVORITE)
-            val favorite = result.parseList(classParser<Favorite>())
-            favorites.clear()
-
-            favorites.addAll(favorite)
-
-            adapter = FavoriteEventsAdapter(context, favorites)
-            rv_favorite.layoutManager = LinearLayoutManager(context)
-            rv_favorite.adapter = adapter
-        }
-    }
 }

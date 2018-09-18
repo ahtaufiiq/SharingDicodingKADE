@@ -5,8 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.R.id.*
 import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
-import com.example.ahmad.footbalmatch.view.main.lastMatch.LastMatchFragment
-import com.example.ahmad.footbalmatch.view.main.nextMatch.MatchFragment
+import com.example.ahmad.footbalmatch.view.main.match.MatchesFragment
+import com.example.ahmad.footbalmatch.view.main.match.nextMatch.NextMatchFragment
+import com.example.ahmad.footbalmatch.view.main.team.TeamFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 navigation_next_match -> {
-                    loadMatchFragment(savedInstanceState)
+                    loadNextMatchFragment(savedInstanceState)
                 }
                 navigation_favorite -> {
                     loadFavoritesFragment(savedInstanceState)
@@ -34,11 +35,11 @@ class MainActivity : AppCompatActivity() {
         navigation.selectedItemId = R.id.navigation_last_match
     }
 
-    private fun loadMatchFragment(savedInstanceState: Bundle?) {
+    private fun loadNextMatchFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, MatchFragment(), MatchFragment::class.java.simpleName)
+                    .replace(R.id.main_container, TeamFragment(), TeamFragment::class.java.simpleName)
                     .commit()
         }
     }
@@ -47,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .replace(R.id.main_container, LastMatchFragment(), LastMatchFragment::class.java.simpleName)
+                    .replace(R.id.main_container, MatchesFragment(), MatchesFragment::class.java.simpleName)
                     .commit()
         }
     }

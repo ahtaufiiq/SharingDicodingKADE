@@ -8,22 +8,23 @@ import android.view.ViewGroup
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.DateHelper
 import com.example.ahmad.footbalmatch.data.response.Event
-import com.example.ahmad.footbalmatch.view.detail.DetailActivity
+import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailActivity
+import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailTeamActivity
 import kotlinx.android.synthetic.main.card_match.view.*
 import org.jetbrains.anko.startActivity
 
-class MatchAdapter(val context: Context?, val eventList: List<Event>) : RecyclerView.Adapter<MatchAdapter.ClubViewHolder>() {
+class MatchAdapter(val context: Context?, private val matchList: List<Event>) : RecyclerView.Adapter<MatchAdapter.ClubViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubViewHolder {
         return ClubViewHolder(LayoutInflater.from(context).inflate(R.layout.card_match, parent, false))
     }
 
-    override fun getItemCount(): Int = eventList.size
+    override fun getItemCount(): Int = matchList.size
 
 
     override fun onBindViewHolder(holder: ClubViewHolder, position: Int) {
-        holder.bind(eventList[position])
+        holder.bind(matchList[position])
     }
 
     inner class ClubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,7 +37,7 @@ class MatchAdapter(val context: Context?, val eventList: List<Event>) : Recycler
             itemView.away_team.text = event.strAwayTeam
 
             itemView.setOnClickListener {
-                itemView.context.startActivity<DetailActivity>("event" to event)
+                itemView.context.startActivity<DetailActivity>("event" to event.idEvent)
             }
         }
     }

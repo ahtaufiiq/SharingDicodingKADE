@@ -3,4 +3,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="score">2</string>
+    <string name="string_vs">VS</string>
+    <string name="team_name">Man United</string>
+    <string name="txt_goals">Goals</string>
+    <string name="txt_shots">Shots</string>
+    <string name="txt_goal_keeper">Goal Keeper</string>
+    <string name="txt_defense">Defense</string>
+    <string name="txt_midfield">Midfield</string>
+    <string name="txt_forward">Forward</string>
+    <string name="txt_date">Sen, 03 Mar 2018</string>
 </resources>

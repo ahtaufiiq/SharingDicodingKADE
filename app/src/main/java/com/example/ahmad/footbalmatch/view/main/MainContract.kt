@@ -9,6 +9,5 @@ interface MainContract {
 
     interface Presenter {
         fun getMatch()
-
     }
 }

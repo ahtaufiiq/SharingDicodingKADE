@@ -8,7 +8,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:padding="@dimen/margin_24">
 
@@ -37,7 +37,6 @@
 
                 <ImageView
                     android:id="@+id/img_team_home"
-
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -59,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/margin_8"
                     android:layout_marginTop="@dimen/margin_8"
-                    tools:text="2"
+                    tools:text="@string/score"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/vs"
@@ -72,7 +71,7 @@
                     android:id="@+id/vs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="VS"
+                    android:text="@string/string_vs"
                     app:layout_constraintBottom_toBottomOf="@id/score_team_home_detail"
                     app:layout_constraintEnd_toStartOf="@+id/score_team_away_detail"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -86,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_8"
                     android:layout_marginTop="@dimen/margin_8"
-                    tools:text="2"
+                    tools:text="@string/score"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/img_team_away"
@@ -107,7 +106,7 @@
                     android:id="@+id/tv_away_team_detail"
                     android:layout_width="72dp"
                     android:layout_height="wrap_content"
-                    tools:text="Man United"
+                    tools:text="@string/team_name"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimary"
                     app:layout_constraintRight_toRightOf="parent"
@@ -146,7 +145,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Goals"
+                        android:text="@string/txt_goals"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
                         android:textColor="@color/colorPrimary" />
@@ -177,7 +176,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
-                        android:text="Shots"
+                        android:text="@string/txt_shots"
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
@@ -232,7 +231,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Goal Keeper"
+                        android:text="@string/txt_goal_keeper"
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
@@ -259,7 +258,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Defense"
+                        android:text="@string/txt_defense"
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
@@ -285,7 +284,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Midfield"
+                        android:text="@string/txt_midfield"
                         android:textColor="@color/colorPrimary" />
 
                     <TextView
@@ -313,7 +312,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Forward"
+                        android:text="@string/txt_forward"
                         android:textColor="@color/colorPrimary" />
 
                     <TextView

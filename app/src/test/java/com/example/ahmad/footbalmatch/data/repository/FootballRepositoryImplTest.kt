@@ -3,11 +3,8 @@ package com.example.ahmad.footbalmatch.data.repository
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
 import org.junit.Before
 
-import org.junit.Assert.*
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 
@@ -15,35 +12,35 @@ class FootballRepositoryImplTest {
     @Mock
     lateinit var footballRest: FootballRest
 
-    lateinit var matchRepositoryImpl: FootballRepositoryImpl
+    private lateinit var footballRepositoryImpl: FootballRepositoryImpl
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        matchRepositoryImpl = FootballRepositoryImpl(footballRest)
+        footballRepositoryImpl = FootballRepositoryImpl(footballRest)
     }
 
 
     @Test
     fun getEventById() {
-        matchRepositoryImpl.getEventById("123")
-        verify(footballRest).getEventById("123")
+        footballRepositoryImpl.getEventById("576518")
+        verify(footballRest).getEventById("576518")
     }
     @Test
-    fun getUpcomingMatch() {
-        matchRepositoryImpl.getNextMatch("123")
-        verify(footballRest).getNextmatch("123")
+    fun getNextMatch() {
+        footballRepositoryImpl.getNextMatch("4328")
+        verify(footballRest).getNextmatch("4328")
     }
 
     @Test
-    fun getFootballMatch() {
-        matchRepositoryImpl.getLastMatch("123")
-        verify(footballRest).getLastmatch("123")
+    fun getLastMatch() {
+        footballRepositoryImpl.getLastMatch("4328")
+        verify(footballRest).getLastmatch("4328")
     }
 
     @Test
     fun getTeams() {
-        matchRepositoryImpl.getTeams("123")
-        verify(footballRest).getTeam("123")
+        footballRepositoryImpl.getTeams("133612")
+        verify(footballRest).getTeam("133612")
     }
 }

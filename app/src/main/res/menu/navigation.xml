@@ -4,12 +4,12 @@
     <item
         android:id="@+id/navigation_last_match"
         android:icon="@drawable/ic_prev_match"
-        android:title="Prev. Match" />
+        android:title="Match" />
 
     <item
         android:id="@+id/navigation_next_match"
         android:icon="@drawable/ic_next_match"
-        android:title="Next Match" />
+        android:title="Teams" />
 
     <item
         android:id="@+id/navigation_favorite"
