@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.model
+package com.example.ahmad.footbalmatch.data
 
 import java.text.SimpleDateFormat
 import java.util.*

@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ahmad.footbalmatch.R
-import com.example.ahmad.footbalmatch.model.local.Favorite
-import com.example.ahmad.footbalmatch.model.local.database
+import com.example.ahmad.footbalmatch.data.local.Favorite
+import com.example.ahmad.footbalmatch.data.local.database
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select

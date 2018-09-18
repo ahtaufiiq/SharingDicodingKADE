@@ -1,15 +1,16 @@
 package com.example.ahmad.footbalmatch.view.detail
 
-import com.example.ahmad.footbalmatch.model.repository.FootballRepositoryImpl
+import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class DetailPresenter(val mView: DetailContract.View) : DetailContract.Presenter {
+class DetailPresenter(private val mView: DetailContract.View,val footballRepositoryImpl: FootballRepositoryImpl) : DetailContract.Presenter {
     private val compositeDisposable = CompositeDisposable()
 
     override fun getLogoHomeTeam(id: String) {
-        compositeDisposable.add(FootballRepositoryImpl().getTeams(id)
+
+        compositeDisposable.add(footballRepositoryImpl.getTeams(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe {
@@ -19,7 +20,7 @@ class DetailPresenter(val mView: DetailContract.View) : DetailContract.Presenter
 
 
     override fun getLogoAwayTeam(id: String) {
-        compositeDisposable.add(FootballRepositoryImpl().getTeams(id)
+        compositeDisposable.add(footballRepositoryImpl.getTeams(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe {
@@ -28,7 +29,8 @@ class DetailPresenter(val mView: DetailContract.View) : DetailContract.Presenter
     }
 
     override fun getEvent(id: String) {
-        compositeDisposable.add(FootballRepositoryImpl().getEventById(id)
+
+        compositeDisposable.add(footballRepositoryImpl.getEventById(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe {

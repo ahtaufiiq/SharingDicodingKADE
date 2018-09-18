@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.R.id.*
 import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
+import com.example.ahmad.footbalmatch.view.main.lastMatch.LastMatchFragment
+import com.example.ahmad.footbalmatch.view.main.nextMatch.MatchFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

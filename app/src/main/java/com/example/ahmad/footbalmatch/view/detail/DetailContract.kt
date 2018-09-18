@@ -1,7 +1,7 @@
 package com.example.ahmad.footbalmatch.view.detail
 
-import com.example.ahmad.footbalmatch.model.response.Event
-import com.example.ahmad.footbalmatch.model.response.Team
+import com.example.ahmad.footbalmatch.data.response.Event
+import com.example.ahmad.footbalmatch.data.response.Team
 
 interface DetailContract {
 
@@ -9,6 +9,7 @@ interface DetailContract {
         fun setLogoHomeTeam(team: Team)
         fun setLogoAwayTeam(team: Team)
         fun setDataEvent(team: Event)
+        fun showLoading()
 
     }
 

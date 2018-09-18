@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.model.local
+package com.example.ahmad.footbalmatch.data.local
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

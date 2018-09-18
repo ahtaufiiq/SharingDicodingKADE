@@ -14,11 +14,14 @@ import com.example.ahmad.footbalmatch.R.drawable.ic_add_to_favorites
 import com.example.ahmad.footbalmatch.R.drawable.ic_added_to_favorites
 import com.example.ahmad.footbalmatch.R.id.add_to_favorite
 import com.example.ahmad.footbalmatch.R.menu.detail_menu
-import com.example.ahmad.footbalmatch.model.DateHelper
-import com.example.ahmad.footbalmatch.model.local.Favorite
-import com.example.ahmad.footbalmatch.model.local.database
-import com.example.ahmad.footbalmatch.model.response.Event
-import com.example.ahmad.footbalmatch.model.response.Team
+import com.example.ahmad.footbalmatch.data.DateHelper
+import com.example.ahmad.footbalmatch.data.local.Favorite
+import com.example.ahmad.footbalmatch.data.local.database
+import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
+import com.example.ahmad.footbalmatch.data.response.Event
+import com.example.ahmad.footbalmatch.data.response.Team
+import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
+import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
@@ -26,6 +29,9 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 
 class DetailActivity : AppCompatActivity(), DetailContract.View {
+    override fun showLoading() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private lateinit var event: Event
     private lateinit var favorite: Favorite
@@ -38,7 +44,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        mPresenter = DetailPresenter(this)
+        mPresenter = DetailPresenter(this, FootballRepositoryImpl(FootballApiService.getClient().create(FootballRest::class.java)))
 
 
         if (intent.getParcelableExtra<Event>("event") != null) {

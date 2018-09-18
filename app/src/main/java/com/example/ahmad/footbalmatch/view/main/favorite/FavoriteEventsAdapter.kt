@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ahmad.footbalmatch.R
-import com.example.ahmad.footbalmatch.model.DateHelper
-import com.example.ahmad.footbalmatch.model.local.Favorite
+import com.example.ahmad.footbalmatch.data.DateHelper
+import com.example.ahmad.footbalmatch.data.local.Favorite
 import com.example.ahmad.footbalmatch.view.detail.DetailActivity
 import kotlinx.android.synthetic.main.card_match.view.*
 import org.jetbrains.anko.startActivity

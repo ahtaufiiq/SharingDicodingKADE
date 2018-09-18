@@ -1,7 +1,7 @@
-package com.example.ahmad.footbalmatch.model.repository
+package com.example.ahmad.footbalmatch.data.repository
 
-import com.example.ahmad.footbalmatch.model.response.Events
-import com.example.ahmad.footbalmatch.model.response.Teams
+import com.example.ahmad.footbalmatch.data.response.Events
+import com.example.ahmad.footbalmatch.data.response.Teams
 import io.reactivex.Observable
 
 interface FootbalRepository {

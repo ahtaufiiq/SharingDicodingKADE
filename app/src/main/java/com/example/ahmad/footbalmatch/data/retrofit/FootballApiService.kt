@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.model.retrofit
+package com.example.ahmad.footbalmatch.data.retrofit
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

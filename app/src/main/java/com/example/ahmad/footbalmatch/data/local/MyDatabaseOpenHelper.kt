@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.model.local
+package com.example.ahmad.footbalmatch.data.local
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
