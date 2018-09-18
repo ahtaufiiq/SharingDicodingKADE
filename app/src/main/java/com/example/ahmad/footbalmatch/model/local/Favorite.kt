@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Favorite(val id: Long?, val idEvent: String,val dateEvent: String?, val strHomeTeam: String?, val intHomeScore: String?, val intAwayScore: String?, val strAwayTeam: String?):Parcelable {
+data class Favorite(val id: Long?, val idEvent: String, val dateEvent: String?, val strHomeTeam: String?, val intHomeScore: String?, val intAwayScore: String?, val strAwayTeam: String?) : Parcelable {
 
     companion object {
         const val TABLE_FAVORITE: String = "TABLE_FAVORITE"

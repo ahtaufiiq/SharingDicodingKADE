@@ -2,7 +2,6 @@ package com.example.ahmad.footbalmatch.view.main
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +10,6 @@ import com.example.ahmad.footbalmatch.model.DateHelper
 import com.example.ahmad.footbalmatch.model.response.Event
 import com.example.ahmad.footbalmatch.view.detail.DetailActivity
 import kotlinx.android.synthetic.main.card_match.view.*
-import org.jetbrains.anko.AnkoComponent
-import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.startActivity
 
 class MatchAdapter(val context: Context?, val eventList: List<Event>) : RecyclerView.Adapter<MatchAdapter.ClubViewHolder>() {

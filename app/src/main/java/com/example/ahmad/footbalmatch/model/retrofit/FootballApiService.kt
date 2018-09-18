@@ -7,7 +7,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class FootballApiService {
 
     companion object {
-        fun getClient() : Retrofit {
+        fun getClient(): Retrofit {
+
             return Retrofit.Builder()
                     .baseUrl("https://www.thesportsdb.com/api/v1/json/1/")
                     .addConverterFactory(GsonConverterFactory.create())

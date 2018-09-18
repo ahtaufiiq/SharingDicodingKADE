@@ -23,10 +23,11 @@
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemIconTint="@drawable/nav_item_color_state"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:background="#FFF"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

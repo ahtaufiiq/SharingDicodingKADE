@@ -28,4 +28,4 @@ data class Event(
         @SerializedName("strHomeLineupForward") var strHomeLineupForward: String?,
         @SerializedName("strHomeLineupGoalkeeper") var strHomeLineupGoalkeeper: String?,
         @SerializedName("strHomeLineupMidfield") var strHomeLineupMidfield: String?
-): Parcelable
+) : Parcelable

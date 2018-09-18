@@ -18,7 +18,6 @@ import com.example.ahmad.footbalmatch.model.DateHelper
 import com.example.ahmad.footbalmatch.model.local.Favorite
 import com.example.ahmad.footbalmatch.model.local.database
 import com.example.ahmad.footbalmatch.model.response.Event
-import com.example.ahmad.footbalmatch.model.response.Events
 import com.example.ahmad.footbalmatch.model.response.Team
 import kotlinx.android.synthetic.main.activity_detail.*
 import org.jetbrains.anko.db.classParser
@@ -42,13 +41,13 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         mPresenter = DetailPresenter(this)
 
 
-        if (intent.getParcelableExtra<Event>("event")!=null){
+        if (intent.getParcelableExtra<Event>("event") != null) {
             event = intent.getParcelableExtra("event")
-            id=event.idEvent
+            id = event.idEvent
             setDataEvent(event)
-        }else if (intent.getParcelableExtra<Favorite>("favorite")!=null){
-            favorite=intent.getParcelableExtra<Favorite>("favorite")
-            id=favorite.idEvent
+        } else if (intent.getParcelableExtra<Favorite>("favorite") != null) {
+            favorite = intent.getParcelableExtra("favorite")
+            id = favorite.idEvent
             mPresenter.getEvent(id)
 
         }
@@ -85,6 +84,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         mPresenter.getLogoAwayTeam(team.idAwayTeam)
         mPresenter.getLogoHomeTeam(team.idHomeTeam)
     }
+
     override fun setLogoAwayTeam(team: Team) {
         Glide.with(applicationContext)
                 .load(team.strTeamBadge)
@@ -142,7 +142,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         }
     }
 
-    private fun favoriteState(){
+    private fun favoriteState() {
         database.use {
             val result = select(Favorite.TABLE_FAVORITE)
                     .whereArgs("(ID_EVENT = {id})",
@@ -151,15 +151,17 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
             isFavorite = !favorite.isEmpty()
         }
     }
-    private fun removeFromFavorite(){
+
+    private fun removeFromFavorite() {
         try {
             database.use {
                 delete(Favorite.TABLE_FAVORITE, "(ID_EVENT = {id})",
                         "id" to id)
             }
-        } catch (e: SQLiteConstraintException){
+        } catch (e: SQLiteConstraintException) {
         }
     }
+
     private fun setFavorite() {
         if (isFavorite)
             menuItem?.getItem(0)?.icon = ContextCompat.getDrawable(this, ic_added_to_favorites)

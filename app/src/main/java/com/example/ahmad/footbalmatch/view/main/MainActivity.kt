@@ -1,7 +1,7 @@
 package com.example.ahmad.footbalmatch.view.main
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.R.id.*
 import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navigation.setOnNavigationItemSelectedListener{ item ->
+        navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 navigation_next_match -> {
                     loadMatchFragment(savedInstanceState)
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
         navigation.selectedItemId = R.id.navigation_last_match
     }
+
     private fun loadMatchFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                     .commit()
         }
     }
+
     private fun loadLastMatchFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                     .commit()
         }
     }
+
     private fun loadFavoritesFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             supportFragmentManager
