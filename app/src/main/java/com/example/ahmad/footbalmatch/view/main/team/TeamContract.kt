@@ -8,6 +8,7 @@ interface TeamContract {
     }
 
     interface Presenter {
-        fun getTeam()
+        fun getTeam(id: String)
+        fun searchTeam(teamName: String)
     }
 }

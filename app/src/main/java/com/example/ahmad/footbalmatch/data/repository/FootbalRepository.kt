@@ -13,13 +13,13 @@ interface FootbalRepository {
 
     fun getEventById(id: String): Observable<Events>
 
-    fun searchEvent(id:String): Observable<Events>
+    fun searchEvent(query: String?): Observable<SearchedMatches>
 
-    fun searchTeams(id:String): Observable<Teams>
+    fun searchTeams(id: String): Observable<Teams>
 
-    fun getAllTeam(id:String): Observable<Teams>
+    fun getAllTeam(id: String): Observable<Teams>
 
-    fun getAllPlayer(id:String): Observable<FootballPlayer>
+    fun getAllPlayer(id: String): Observable<FootballPlayer>
 
-    fun getPlayer(id:String): Observable<PlayerDetail>
+    fun getPlayer(id: String): Observable<PlayerDetail>
 }

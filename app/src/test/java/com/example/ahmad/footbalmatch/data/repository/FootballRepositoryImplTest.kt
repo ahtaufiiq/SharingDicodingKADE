@@ -43,4 +43,10 @@ class FootballRepositoryImplTest {
         footballRepositoryImpl.getTeams("133612")
         verify(footballRest).getTeam("133612")
     }
+
+    @Test
+    fun searchEvent() {
+        footballRepositoryImpl.searchEvent("Arsenal")
+        verify(footballRest).searchEvent("Arsenal")
+    }
 }

@@ -13,8 +13,7 @@ import com.example.ahmad.footbalmatch.view.main.match.nextMatch.NextMatchFragmen
 import com.example.ahmad.footbalmatch.view.main.search.SearchMatchActivity
 import org.jetbrains.anko.startActivity
 
-class  MatchesFragment : Fragment() {
-
+class MatchesFragment : Fragment() {
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

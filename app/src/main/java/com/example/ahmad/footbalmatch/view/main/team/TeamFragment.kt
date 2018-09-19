@@ -4,19 +4,13 @@ package com.example.ahmad.footbalmatch.view.main.team
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-
+import android.support.v7.widget.SearchView
+import android.view.*
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
-import com.example.ahmad.footbalmatch.data.response.Event
 import com.example.ahmad.footbalmatch.data.response.Team
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
-import com.example.ahmad.footbalmatch.view.main.MatchAdapter
-import com.example.ahmad.footbalmatch.view.main.match.lastMatch.LastMatchPresenter
-import kotlinx.android.synthetic.main.fragment_match.*
 import kotlinx.android.synthetic.main.fragment_team.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,18 +33,45 @@ class TeamFragment : Fragment(), TeamContract.View {
             matchLists.clear()
             matchLists.addAll(matchList)
             rv_team.layoutManager = LinearLayoutManager(context)
-            rv_team.adapter = TeamAdapter( matchLists,context)
+            rv_team.adapter = TeamAdapter(matchLists, context)
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view= inflater.inflate(R.layout.fragment_team, container, false)
+        val view = inflater.inflate(R.layout.fragment_team, container, false)
         mPresenter = TeamPresenter(this, FootballRepositoryImpl(FootballApiService.getClient().create(FootballRest::class.java)))
-        mPresenter.getTeam()
+        mPresenter.getTeam("4328")
+        setHasOptionsMenu(true)
+
         return view
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.menu_search, menu)
+        val searchView = menu?.findItem(R.id.actionSearch)?.actionView as SearchView?
+        searchView?.queryHint = "Search team"
+
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                mPresenter.searchTeam(newText)
+                return false
+            }
+        })
+
+        searchView?.setOnCloseListener(object : SearchView.OnCloseListener {
+            override fun onClose(): Boolean {
+                mPresenter.getTeam("4328")
+                return true
+            }
+        })
+    }
 
 }

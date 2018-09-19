@@ -6,7 +6,6 @@ import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.R.id.*
 import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
 import com.example.ahmad.footbalmatch.view.main.match.MatchesFragment
-import com.example.ahmad.footbalmatch.view.main.match.nextMatch.NextMatchFragment
 import com.example.ahmad.footbalmatch.view.main.team.TeamFragment
 import kotlinx.android.synthetic.main.activity_main.*
 

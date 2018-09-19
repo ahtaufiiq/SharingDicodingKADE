@@ -9,7 +9,6 @@ import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.DateHelper
 import com.example.ahmad.footbalmatch.data.response.Event
 import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailActivity
-import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailTeamActivity
 import kotlinx.android.synthetic.main.card_match.view.*
 import org.jetbrains.anko.startActivity
 

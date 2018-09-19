@@ -8,23 +8,19 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.bumptech.glide.Glide
-
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.R.drawable.ic_add_to_favorites
 import com.example.ahmad.footbalmatch.R.drawable.ic_added_to_favorites
 import com.example.ahmad.footbalmatch.R.id.add_to_favorite
 import com.example.ahmad.footbalmatch.R.menu.detail_menu
-import com.example.ahmad.footbalmatch.data.DateHelper
 import com.example.ahmad.footbalmatch.data.local.Favorite
 import com.example.ahmad.footbalmatch.data.local.FavoriteTeam
 import com.example.ahmad.footbalmatch.data.local.database
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
-import com.example.ahmad.footbalmatch.data.response.Event
 import com.example.ahmad.footbalmatch.data.response.Player
 import com.example.ahmad.footbalmatch.data.response.Team
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
-import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_team_detail.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
@@ -33,8 +29,8 @@ import org.jetbrains.anko.db.select
 
 class DetailTeamActivity : AppCompatActivity(), DetailTeamContract.View {
     override fun setDataPlayer(player: List<Player>) {
-        for (name:Player in player){
-            Log.d("namanya",name.strPlayer)
+        for (name: Player in player) {
+            Log.d("namanya", name.strPlayer)
         }
     }
 
@@ -61,7 +57,7 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamContract.View {
     }
 
     override fun setDataEvent(team: Team) {
-        this.team=team
+        this.team = team
 
         tv_team_detail.text = team.strTeam
         Glide.with(this)

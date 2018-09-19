@@ -53,7 +53,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
     }
 
     override fun setDataEvent(team: Event) {
-        event=team
+        event = team
         tv_tanggal_detail.text = DateHelper.reformatStringDate(team.dateEvent.toString(), DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
         tv_home_team_detail.text = team.strHomeTeam
         score_team_home_detail.text = team.intHomeScore

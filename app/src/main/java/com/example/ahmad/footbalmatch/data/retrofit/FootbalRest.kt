@@ -1,9 +1,6 @@
 package com.example.ahmad.footbalmatch.data.retrofit
 
-import com.example.ahmad.footbalmatch.data.response.Events
-import com.example.ahmad.footbalmatch.data.response.FootballPlayer
-import com.example.ahmad.footbalmatch.data.response.PlayerDetail
-import com.example.ahmad.footbalmatch.data.response.Teams
+import com.example.ahmad.footbalmatch.data.response.*
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -24,17 +21,17 @@ interface FootballRest {
     fun getEventById(@Query("id") id: String): Observable<Events>
 
     @GET("searchevents.php")
-    fun searchEvent(@Query("id") id: String): Observable<Events>
+    fun searchEvent(@Query("e") query: String?): Observable<SearchedMatches>
 
     @GET("searchteams.php")
-    fun searchTeams(@Query("id") id: String): Observable<Teams>
+    fun searchTeams(@Query("t") id: String): Observable<Teams>
 
     @GET("lookup_all_teams.php")
-    fun getAllTeam(@Query("id") id:String) : Observable<Teams>
+    fun getAllTeam(@Query("id") id: String): Observable<Teams>
 
     @GET("lookup_all_players.php")
-    fun getAllPlayers(@Query("id") id:String?) : Observable<FootballPlayer>
+    fun getAllPlayers(@Query("id") id: String?): Observable<FootballPlayer>
 
     @GET("lookupplayer.php")
-    fun getPlayerDetail(@Query("id") id:String?) : Observable<PlayerDetail>
+    fun getPlayerDetail(@Query("id") id: String?): Observable<PlayerDetail>
 }
