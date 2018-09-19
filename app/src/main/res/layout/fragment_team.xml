@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.main.team.TeamFragment">
+   <Spinner
+       android:id="@+id/spinner_team"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
 
+   </Spinner>
    <android.support.v7.widget.RecyclerView
        android:id="@+id/rv_team"
+       app:layout_constraintTop_toBottomOf="@id/spinner_team"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"/>
 
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>

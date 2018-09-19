@@ -2,7 +2,10 @@ package com.example.ahmad.footbalmatch.view.detail.detailMatch
 
 import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
+import android.support.design.widget.TabLayout
+import android.support.v4.app.FragmentManager
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
@@ -13,6 +16,7 @@ import com.example.ahmad.footbalmatch.R.drawable.ic_add_to_favorites
 import com.example.ahmad.footbalmatch.R.drawable.ic_added_to_favorites
 import com.example.ahmad.footbalmatch.R.id.add_to_favorite
 import com.example.ahmad.footbalmatch.R.menu.detail_menu
+import com.example.ahmad.footbalmatch.data.ViewPagerAdapter
 import com.example.ahmad.footbalmatch.data.local.Favorite
 import com.example.ahmad.footbalmatch.data.local.FavoriteTeam
 import com.example.ahmad.footbalmatch.data.local.database
@@ -21,6 +25,8 @@ import com.example.ahmad.footbalmatch.data.response.Player
 import com.example.ahmad.footbalmatch.data.response.Team
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
+import com.example.ahmad.footbalmatch.view.main.match.lastMatch.LastMatchFragment
+import com.example.ahmad.footbalmatch.view.main.match.nextMatch.NextMatchFragment
 import kotlinx.android.synthetic.main.activity_team_detail.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
@@ -52,7 +58,13 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamContract.View {
 
 
         favoriteState()
-
+        val vPager = findViewById<ViewPager>(R.id.viewpager)
+        val tabs = findViewById<TabLayout>(R.id.tabs)
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.populateFragment(LastMatchFragment(), "Last Match")
+        adapter.populateFragment(NextMatchFragment(), "Next Match")
+        vPager.adapter = adapter
+        tabs.setupWithViewPager(vPager)
 
     }
 

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.main.team.TeamFragment">
     <Spinner
-        android:id="@+id/spinner_match"
+        android:id="@+id/spinner_next_match"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,7 +14,7 @@
     </Spinner>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_match"
-        app:layout_constraintTop_toBottomOf="@id/spinner_match"
+        app:layout_constraintTop_toBottomOf="@id/spinner_next_match"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

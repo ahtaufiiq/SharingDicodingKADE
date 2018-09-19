@@ -26,8 +26,8 @@ interface FootballRest {
     @GET("searchteams.php")
     fun searchTeams(@Query("t") id: String): Observable<Teams>
 
-    @GET("lookup_all_teams.php")
-    fun getAllTeam(@Query("id") id: String): Observable<Teams>
+    @GET("search_all_teams.php")
+    fun getAllTeam(@Query("l") id: String): Observable<Teams>
 
     @GET("lookup_all_players.php")
     fun getAllPlayers(@Query("id") id: String?): Observable<FootballPlayer>

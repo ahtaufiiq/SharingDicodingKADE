@@ -10,8 +10,8 @@ class NextMatchPresenter(private val mView: MainContract.View, private val footb
 
     private val compositeDisposable = CompositeDisposable()
 
-    override fun getMatch() {
-        compositeDisposable.add(footballRepositoryImpl.getNextMatch("4328")
+    override fun getMatch(league:String) {
+        compositeDisposable.add(footballRepositoryImpl.getNextMatch(league)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe {

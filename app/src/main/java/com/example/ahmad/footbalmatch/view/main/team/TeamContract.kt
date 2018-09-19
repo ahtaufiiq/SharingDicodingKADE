@@ -9,6 +9,7 @@ interface TeamContract {
 
     interface Presenter {
         fun getTeam(id: String)
+        fun getAllTeam(league:String)
         fun searchTeam(teamName: String)
     }
 }

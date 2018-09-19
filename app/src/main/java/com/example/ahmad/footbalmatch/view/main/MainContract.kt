@@ -8,6 +8,6 @@ interface MainContract {
     }
 
     interface Presenter {
-        fun getMatch()
+        fun getMatch(league:String)
     }
 }
