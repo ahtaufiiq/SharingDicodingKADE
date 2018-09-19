@@ -54,12 +54,13 @@ dependencies {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
 
-    implementation "com.github.bumptech.glide:glide:$glide_version"
-    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
     implementation "org.jetbrains.anko:anko:$anko_version"
     implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.23.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.25.3"
 
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation "com.squareup.retrofit2:converter-gson:2.4.0"

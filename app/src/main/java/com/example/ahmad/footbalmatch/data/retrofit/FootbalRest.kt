@@ -13,7 +13,6 @@ interface FootballRest {
     @GET("eventsnextleague.php")
     fun getNextmatch(@Query("id") id: String): Observable<Events>
 
-
     @GET("lookupteam.php")
     fun getTeam(@Query("id") id: String): Observable<Teams>
 

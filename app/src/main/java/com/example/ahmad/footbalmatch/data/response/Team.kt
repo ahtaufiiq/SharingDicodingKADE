@@ -1,8 +1,11 @@
 package com.example.ahmad.footbalmatch.data.response
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Team(
 
 
@@ -106,4 +109,4 @@ data class Team(
         var strWebsite: String?,
         @SerializedName("strYoutube")
         var strYoutube: String?
-)
+):Parcelable

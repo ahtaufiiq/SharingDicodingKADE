@@ -22,4 +22,13 @@
         <item>French Ligue 1</item>
         <item>Spanish La Liga</item>
     </array>
+
+    <array name="id_league">
+        <item>4328</item>
+        <item>4329</item>
+        <item>4331</item>
+        <item>4332</item>
+        <item>4334</item>
+        <item>4335</item>
+    </array>
 </resources>
