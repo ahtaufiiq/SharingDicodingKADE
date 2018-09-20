@@ -20,18 +20,25 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 navigation_next_match -> {
                     loadNextMatchFragment(savedInstanceState)
+                    supportActionBar?.elevation=4F
+
                 }
                 navigation_favorite -> {
                     loadFavoritesFragment(savedInstanceState)
+                    supportActionBar?.elevation=0F
+
                 }
                 navigation_last_match -> {
                     loadLastMatchFragment(savedInstanceState)
+                    supportActionBar?.elevation=0F
+
                 }
 
             }
             true
         }
         navigation.selectedItemId = R.id.navigation_last_match
+
     }
 
     private fun loadNextMatchFragment(savedInstanceState: Bundle?) {

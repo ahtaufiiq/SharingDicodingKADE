@@ -24,8 +24,8 @@ class  FavoriteFragment : Fragment() {
         val tabs = view.findViewById<TabLayout>(R.id.tabs)
         val adapter = ViewPagerAdapter(childFragmentManager)
         setHasOptionsMenu(true)
-        adapter.populateFragment(FavoriteMatch(), "Favorite Match")
-        adapter.populateFragment(FavoriteTeamFragment(), "Favorite Team")
+        adapter.populateFragment(FavoriteMatch(), "Match")
+        adapter.populateFragment(FavoriteTeamFragment(), "Team")
         vPager.adapter = adapter
         tabs.setupWithViewPager(vPager)
     }

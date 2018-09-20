@@ -1,7 +1,5 @@
-package com.example.ahmad.footbalmatch.view.detail.detailTeam
+package com.example.ahmad.footbalmatch.view.detail.detailTeam.player
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -12,16 +10,11 @@ import android.view.ViewGroup
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import com.example.ahmad.footbalmatch.data.response.Player
-import com.example.ahmad.footbalmatch.data.response.Team
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
-import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailContract
-import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailTeamPresenter
-import com.example.ahmad.footbalmatch.view.main.team.TeamAdapter
 import kotlinx.android.synthetic.main.fragment_player.*
-import org.jetbrains.anko.support.v4.ctx
 
-class PlayerFragment : Fragment() ,PlayerFragmentContract.View{
+class PlayerFragment : Fragment() , PlayerFragmentContract.View {
     override fun setDataPlayer(player: List<Player>) {
         matchLists.clear()
         matchLists.addAll(player)

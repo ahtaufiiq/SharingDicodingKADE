@@ -11,12 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.main.MainActivity">
+        <activity android:name=".view.main.MainActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".view.detail.detailMatch.DetailActivity"
@@ -26,7 +28,8 @@
             android:name=".view.detail.detailMatch.DetailTeamActivity"
             android:label="Team Detail"
             android:parentActivityName=".view.main.MainActivity" />
-        <activity android:name=".view.main.search.SearchMatchActivity"></activity>
+        <activity android:name=".view.main.search.SearchMatchActivity" />
+        <activity android:name=".view.detail.detailTeam.player.playerDetail.PlayerDetailActivity"/>
     </application>
 
 </manifest>

@@ -6,35 +6,35 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import com.example.ahmad.footbalmatch.data.response.Event
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
 import com.example.ahmad.footbalmatch.view.main.MatchAdapter
-import kotlinx.android.synthetic.main.activity_search_match.*
+import kotlinx.android.synthetic.main.fragment_match.*
 
 class SearchMatchActivity : AppCompatActivity(), SearchMatchContract.View {
     private var matchLists: MutableList<Event> = mutableListOf()
     lateinit var mPresenter: SearchMatchContract.Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_match)
+        setContentView(R.layout.fragment_match)
 
         val query = intent.getStringExtra("query")
-        Log.v("test", query)
 
         mPresenter = SearchMatchPresenter(this, FootballRepositoryImpl(FootballApiService.getClient().create(FootballRest::class.java)))
         mPresenter.searchMatchs(query)
+        spinner_match.visibility= View.GONE
 
     }
 
     override fun displayMatch(matchList: List<Event>) {
-
         matchLists.clear()
         matchLists.addAll(matchList)
-        rvFootball.layoutManager = LinearLayoutManager(applicationContext)
-        rvFootball.adapter = MatchAdapter(applicationContext, matchList)
+        rv_match.layoutManager = LinearLayoutManager(this)
+        rv_match.adapter = MatchAdapter(this, matchList)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

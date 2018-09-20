@@ -76,11 +76,11 @@ class TeamFragment : Fragment(), TeamContract.View {
 
         searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                mPresenter.searchTeam(query)
                 return false
             }
 
-            override fun onQueryTextChange(newText: String): Boolean {
+            override fun onQueryTextChange(query: String): Boolean {
+                mPresenter.searchTeam(query)
                 return false
             }
         })

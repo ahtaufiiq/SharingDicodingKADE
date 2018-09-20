@@ -1,7 +1,6 @@
-package com.example.ahmad.footbalmatch.view.detail.detailTeam
+package com.example.ahmad.footbalmatch.view.detail.detailTeam.player
 
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
-import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailTeamContract
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

@@ -14,7 +14,7 @@ interface FootballRest {
     fun getNextmatch(@Query("id") id: String): Observable<Events>
 
     @GET("lookupteam.php")
-    fun getTeam(@Query("id") id: String): Observable<Teams>
+    fun getTeam(@Query("id") id: String?): Observable<Teams>
 
     @GET("lookupevent.php")
     fun getEventById(@Query("id") id: String): Observable<Events>

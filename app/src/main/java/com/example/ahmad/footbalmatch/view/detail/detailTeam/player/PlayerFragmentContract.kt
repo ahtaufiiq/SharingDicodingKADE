@@ -1,7 +1,6 @@
-package com.example.ahmad.footbalmatch.view.detail.detailTeam
+package com.example.ahmad.footbalmatch.view.detail.detailTeam.player
 
 import com.example.ahmad.footbalmatch.data.response.Player
-import com.example.ahmad.footbalmatch.data.response.Team
 
 interface PlayerFragmentContract {
 

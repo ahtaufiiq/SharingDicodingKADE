@@ -27,10 +27,12 @@ class MatchesFragment : Fragment() {
         val tabs = view.findViewById<TabLayout>(R.id.tabs)
         val adapter = ViewPagerAdapter(childFragmentManager)
         setHasOptionsMenu(true)
-        adapter.populateFragment(LastMatchFragment(), "Last Match")
-        adapter.populateFragment(NextMatchFragment(), "Next Match")
+        adapter.populateFragment(LastMatchFragment(), "Past")
+        adapter.populateFragment(NextMatchFragment(), "Next")
         vPager.adapter = adapter
         tabs.setupWithViewPager(vPager)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
+    android:layout_height="match_parent"
+    tools:context=".view.detail.detailTeam.player.playerDetail.PlayerDetailActivity">
+
+    <ImageView
+        android:id="@+id/img_banner_player"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title_weight"
+        android:layout_marginTop="@dimen/margin_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_weight"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/title_height"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_banner_player" />
+
+    <TextView
+        android:id="@+id/title_height"
+        android:layout_marginTop="@dimen/margin_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_weight"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/title_weight"
+        app:layout_constraintTop_toBottomOf="@id/img_banner_player" />
+
+    <TextView
+        android:id="@+id/tv_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/txt_weight"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_height"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_weight" />
+
+    <TextView
+        android:id="@+id/tv_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="@string/txt_height"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_weight"
+        app:layout_constraintTop_toBottomOf="@id/title_height" />
+
+    <TextView
+        android:id="@+id/tv_position_player"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_height"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/margin_24"
+        android:textSize="15sp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_description_player"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_position_player"
+        android:layout_margin="@dimen/margin_24"
+        android:layout_height="wrap_content" />
+</android.support.constraint.ConstraintLayout>

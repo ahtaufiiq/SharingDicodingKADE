@@ -20,12 +20,11 @@ import com.example.ahmad.footbalmatch.data.local.Favorite
 import com.example.ahmad.footbalmatch.data.local.FavoriteTeam
 import com.example.ahmad.footbalmatch.data.local.database
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
-import com.example.ahmad.footbalmatch.data.response.Player
 import com.example.ahmad.footbalmatch.data.response.Team
 import com.example.ahmad.footbalmatch.data.retrofit.FootballApiService
 import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
-import com.example.ahmad.footbalmatch.view.detail.detailTeam.OverviewFragment
-import com.example.ahmad.footbalmatch.view.detail.detailTeam.PlayerFragment
+import com.example.ahmad.footbalmatch.view.detail.detailTeam.overviewTeam.OverviewFragment
+import com.example.ahmad.footbalmatch.view.detail.detailTeam.player.PlayerFragment
 import kotlinx.android.synthetic.main.activity_team_detail.*
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.delete
@@ -33,11 +32,6 @@ import org.jetbrains.anko.db.insert
 import org.jetbrains.anko.db.select
 
 class DetailTeamActivity : AppCompatActivity(), DetailTeamContract.View {
-    override fun setDataPlayer(player: List<Player>) {
-        for (name: Player in player) {
-            Log.d("namanya", name.strPlayer)
-        }
-    }
 
     private lateinit var team: Team
     private var menuItem: Menu? = null
@@ -52,21 +46,21 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamContract.View {
         setContentView(R.layout.activity_team_detail)
         mPresenter = DetailTeamPresenter(this, FootballRepositoryImpl(FootballApiService.getClient().create(FootballRest::class.java)))
 
-        id = intent.getStringExtra("event")
+        Log.d("asd",""+intent.getStringExtra("event"))
+        id=intent.getStringExtra("event")
         mPresenter.getTeam(id)
-        mPresenter.getPlayer(id)
-        bundle.putString("idTeam",id)
+        bundle.putString("idTeam", id)
 
         favoriteState()
         val vPager = findViewById<ViewPager>(R.id.viewpager)
         val tabs = findViewById<TabLayout>(R.id.tabs)
         val adapter = ViewPagerAdapter(supportFragmentManager)
 
-        val overviewFragment=OverviewFragment()
-        overviewFragment.arguments=bundle
+        val overviewFragment = OverviewFragment()
+        overviewFragment.arguments = bundle
 
-        val playerFragment=PlayerFragment()
-        playerFragment.arguments=bundle
+        val playerFragment = PlayerFragment()
+        playerFragment.arguments = bundle
 
         adapter.populateFragment(overviewFragment, "Overview Team")
         adapter.populateFragment(playerFragment, "Team Player")
@@ -77,11 +71,12 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamContract.View {
 
     override fun setDataEvent(team: Team) {
         this.team = team
-
-        tv_team_detail.text = team.strTeam
         Glide.with(this)
                 .load(team.strTeamBadge)
                 .into(tv_teamBadge_detail)
+        tv_team_detail.text = team.strTeam
+        tv_team_year.text=team.intFormedYear
+        tv_team_stadion.text=team.strStadium
     }
 
 

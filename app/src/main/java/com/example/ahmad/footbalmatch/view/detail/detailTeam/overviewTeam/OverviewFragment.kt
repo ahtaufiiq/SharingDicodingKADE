@@ -1,7 +1,6 @@
-package com.example.ahmad.footbalmatch.view.detail.detailTeam
+package com.example.ahmad.footbalmatch.view.detail.detailTeam.overviewTeam
 
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -17,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_overview.*
 
 
 
-class OverviewFragment : Fragment() ,OverviewFragmentContract.View{
+class OverviewFragment : Fragment() , OverviewFragmentContract.View {
     override fun setData(team: Team) {
         tv_team.text=team.strDescriptionEN
     }
@@ -32,6 +31,6 @@ class OverviewFragment : Fragment() ,OverviewFragmentContract.View{
         super.onActivityCreated(savedInstanceState)
         mPresenter = OverviewFragmentPresenter(this, FootballRepositoryImpl(FootballApiService.getClient().create(FootballRest::class.java)))
         val team= arguments?.getString("idTeam")
-        mPresenter.getTeams(team!!)
+        mPresenter.getTeams(team)
     }
 }

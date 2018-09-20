@@ -31,7 +31,6 @@ import org.jetbrains.anko.db.select
 class DetailActivity : AppCompatActivity(), DetailContract.View {
 
     private lateinit var event: Event
-    private lateinit var favorite: Favorite
     private var menuItem: Menu? = null
     private var isFavorite: Boolean = false
 
@@ -43,12 +42,9 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         setContentView(R.layout.activity_detail)
         mPresenter = DetailPresenter(this, FootballRepositoryImpl(FootballApiService.getClient().create(FootballRest::class.java)))
 
-
         id = intent.getStringExtra("event")
         mPresenter.getEvent(id)
-
         favoriteState()
-
 
     }
 

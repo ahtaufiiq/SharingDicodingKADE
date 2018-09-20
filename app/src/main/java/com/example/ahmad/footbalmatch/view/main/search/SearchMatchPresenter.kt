@@ -9,14 +9,14 @@ import java.util.*
 class SearchMatchPresenter(val mView: SearchMatchContract.View,
                            val footballRepositoryImpl: FootballRepositoryImpl) : SearchMatchContract.Presenter {
 
-    val compositeDisposable = CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
 
     override fun searchMatchs(query: String?) {
         compositeDisposable.add(footballRepositoryImpl.searchEvent(query)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe {
-                    mView.displayMatch(it.events ?: Collections.emptyList())
+                    mView.displayMatch(it.events )
                 })
     }
 

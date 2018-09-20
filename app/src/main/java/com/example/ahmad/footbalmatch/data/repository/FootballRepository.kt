@@ -3,13 +3,13 @@ package com.example.ahmad.footbalmatch.data.repository
 import com.example.ahmad.footbalmatch.data.response.*
 import io.reactivex.Observable
 
-interface FootbalRepository {
+interface FootballRepository {
 
     fun getLastMatch(id: String): Observable<Events>
 
     fun getNextMatch(id: String): Observable<Events>
 
-    fun getTeams(id: String): Observable<Teams>
+    fun getTeams(id: String?): Observable<Teams>
 
     fun getEventById(id: String): Observable<Events>
 

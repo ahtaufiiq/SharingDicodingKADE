@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.view.detail.detailTeam
+package com.example.ahmad.footbalmatch.view.detail.detailTeam.overviewTeam
 
 import com.example.ahmad.footbalmatch.data.response.Player
 import com.example.ahmad.footbalmatch.data.response.Team
@@ -10,6 +10,6 @@ interface OverviewFragmentContract {
     }
 
     interface Presenter {
-        fun getTeams(id: String)
+        fun getTeams(id: String?)
     }
 }

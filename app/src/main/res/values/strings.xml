@@ -13,6 +13,8 @@
     <string name="txt_midfield">Midfield</string>
     <string name="txt_forward">Forward</string>
     <string name="txt_date">Sen, 03 Mar 2018</string>
+    <string name="txt_weight">Weight (Kg)</string>
+    <string name="txt_height">Height (M)</string>
 
     <array name="league">
         <item>English Premier League</item>
