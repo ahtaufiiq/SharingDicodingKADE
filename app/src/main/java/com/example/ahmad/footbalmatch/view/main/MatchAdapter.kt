@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.DateHelper
 import com.example.ahmad.footbalmatch.data.response.Event
-import com.example.ahmad.footbalmatch.view.detail.detailMatch.DetailActivity
 import kotlinx.android.synthetic.main.card_match.view.*
 import org.jetbrains.anko.startActivity
 
@@ -35,9 +34,6 @@ class MatchAdapter(val context: Context?, private val matchList: List<Event>) : 
             itemView.score_team_away.text = event.intAwayScore
             itemView.away_team.text = event.strAwayTeam
 
-            itemView.setOnClickListener {
-                itemView.context.startActivity<DetailActivity>("event" to event.idEvent)
-            }
         }
     }
 

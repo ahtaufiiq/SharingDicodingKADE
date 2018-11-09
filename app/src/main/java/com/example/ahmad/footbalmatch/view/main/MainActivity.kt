@@ -1,13 +1,17 @@
 package com.example.ahmad.footbalmatch.view.main
 
 import android.os.Bundle
+import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import com.example.ahmad.footbalmatch.R
-import com.example.ahmad.footbalmatch.R.id.*
-import com.example.ahmad.footbalmatch.view.main.favorite.FavoriteFragment
-import com.example.ahmad.footbalmatch.view.main.match.MatchesFragment
-import com.example.ahmad.footbalmatch.view.main.team.TeamFragment
+import com.example.ahmad.footbalmatch.view.main.match.lastMatch.LastMatchFragment
+import com.example.ahmad.footbalmatch.view.main.match.nextMatch.NextMatchFragment
+import android.support.v4.app.FragmentPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,56 +19,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupViewPager(viewpager)
+    }
 
-        navigation.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                navigation_next_match -> {
-                    loadNextMatchFragment(savedInstanceState)
-                    supportActionBar?.elevation=4F
-
-                }
-                navigation_favorite -> {
-                    loadFavoritesFragment(savedInstanceState)
-                    supportActionBar?.elevation=0F
-
-                }
-                navigation_last_match -> {
-                    loadLastMatchFragment(savedInstanceState)
-                    supportActionBar?.elevation=0F
-
-                }
-
-            }
-            true
-        }
-        navigation.selectedItemId = R.id.navigation_last_match
+    private fun setupViewPager(viewPager: ViewPager) {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.populateFragment(LastMatchFragment(), "List Match")
+        adapter.populateFragment(NextMatchFragment(), "Favorite Match")
+        viewPager.adapter = adapter
+        tabs.setupWithViewPager(viewPager)
 
     }
 
-    private fun loadNextMatchFragment(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.main_container, TeamFragment(), TeamFragment::class.java.simpleName)
-                    .commit()
-        }
-    }
-
-    private fun loadLastMatchFragment(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.main_container, MatchesFragment(), MatchesFragment::class.java.simpleName)
-                    .commit()
-        }
-    }
-
-    private fun loadFavoritesFragment(savedInstanceState: Bundle?) {
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.main_container, FavoriteFragment(), FavoriteFragment::class.java.simpleName)
-                    .commit()
-        }
-    }
 }

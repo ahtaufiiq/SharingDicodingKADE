@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.data
+package com.example.ahmad.footbalmatch.view.main
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

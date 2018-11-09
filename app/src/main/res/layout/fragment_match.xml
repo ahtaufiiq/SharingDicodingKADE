@@ -3,21 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.main.team.TeamFragment">
-    <Spinner
-        android:id="@+id/spinner_match"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_margin="@dimen/margin_12"
-        android:layout_height="wrap_content">
-
-    </Spinner>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_match"
         android:layout_marginLeft="@dimen/margin_24"
         android:layout_marginRight="@dimen/margin_24"
-        app:layout_constraintTop_toBottomOf="@id/spinner_match"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
