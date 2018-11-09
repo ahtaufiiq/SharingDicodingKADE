@@ -1,5 +1,6 @@
 package com.example.ahmad.footbalmatch.view.main.search
 
+import android.util.Log
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -15,9 +16,13 @@ class SearchMatchPresenter(val mView: SearchMatchContract.View,
         compositeDisposable.add(footballRepositoryImpl.searchEvent(query)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe {
-                    mView.displayMatch(it.events )
+                .subscribe (
+                        {
+                            mView.displayMatch(it.events)
+                        }, { error ->
+                    Log.e("Error", error.message)
                 })
+        )
     }
 
 }

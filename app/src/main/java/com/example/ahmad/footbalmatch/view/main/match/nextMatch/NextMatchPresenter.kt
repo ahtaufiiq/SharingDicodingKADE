@@ -1,5 +1,6 @@
 package com.example.ahmad.footbalmatch.view.main.match.nextMatch
 
+import android.util.Log
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import com.example.ahmad.footbalmatch.view.main.MainContract
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,12 +11,16 @@ class NextMatchPresenter(private val mView: MainContract.View, private val footb
 
     private val compositeDisposable = CompositeDisposable()
 
-    override fun getMatch(league:String) {
+    override fun getMatch(league: String) {
         compositeDisposable.add(footballRepositoryImpl.getNextMatch(league)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe {
-                    mView.setDataMatch(it.events)
+                .subscribe(
+                        {
+                            mView.setDataMatch(it.events)
+                        }, { error ->
+                    Log.e("Error", error.message)
                 })
+        )
     }
 }

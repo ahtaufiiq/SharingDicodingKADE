@@ -29,13 +29,11 @@ class FavoriteEventsAdapter(val context: Context?, private val matchList: List<F
 
     inner class ClubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(event: Favorite) {
-
             itemView.tv_tanggal.text = DateHelper.reformatStringDate(event.dateEvent.toString(), DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
             itemView.tv_home_team.text = event.strHomeTeam
             itemView.score_team_home.text = event.intHomeScore
             itemView.score_team_away.text = event.intAwayScore
             itemView.away_team.text = event.strAwayTeam
-
 
             itemView.setOnClickListener {
                 itemView.context.startActivity<DetailActivity>("event" to event.idEvent)

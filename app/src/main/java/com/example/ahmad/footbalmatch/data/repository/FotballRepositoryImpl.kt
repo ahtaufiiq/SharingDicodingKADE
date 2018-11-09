@@ -5,6 +5,7 @@ import com.example.ahmad.footbalmatch.data.retrofit.FootballRest
 import io.reactivex.Observable
 
 class FootballRepositoryImpl(private val footballRest: FootballRest) : FootballRepository {
+
     override fun getAllTeam(id: String): Observable<Teams> = footballRest.getAllTeam(id)
 
     override fun getAllPlayer(id: String): Observable<FootballPlayer> = footballRest.getAllPlayers(id)

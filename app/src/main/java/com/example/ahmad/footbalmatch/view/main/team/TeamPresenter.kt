@@ -1,5 +1,6 @@
 package com.example.ahmad.footbalmatch.view.main.team
 
+import android.util.Log
 import com.example.ahmad.footbalmatch.data.repository.FootballRepositoryImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -14,18 +15,24 @@ class TeamPresenter(private val mView: TeamContract.View, private val footballRe
         compositeDisposable.add(footballRepositoryImpl.getAllTeam(league)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe {
-                    mView.setDataMatch(it.teams)
-                })
+                .subscribe(
+                        {
+                            mView.setDataMatch(it.teams)
+                        }, { error ->
+                    Log.e("Error", error.message)
+                }))
     }
 
     override fun searchTeam(teamName: String) {
         compositeDisposable.add(footballRepositoryImpl.searchTeams(teamName)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe {
-                    mView.setDataMatch(it.teams)
-                })
+                .subscribe(
+                        {
+                            mView.setDataMatch(it.teams)
+                        }, { error ->
+                    Log.e("Error", error.message)
+                }))
     }
 
 }
