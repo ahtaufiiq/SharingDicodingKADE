@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.view.main
+package com.example.ahmad.footbalmatch
 
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.Espresso.pressBack
