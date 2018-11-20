@@ -28,79 +28,10 @@ class MainActivityTest {
     @Test
     fun mainActivityTest() {
 
-        //Last Match
-        sleep_long()
-
-        onView(withId(rv_match))
+        onView(withId(viewpager))
                 .check(matches(isDisplayed()))
-        onView(withId(rv_match))
-                .perform(scrollToPosition<RecyclerView.ViewHolder>(14))
-        onView(withId(rv_match))
-                .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(14,
-                        click()))
-        sleep_short()
-
-        onView(withId(img_team_away))
-                .check(matches(isDisplayed()))
-        onView(withId(img_team_home))
-                .check(matches(isDisplayed()))
-        onView(withId(add_to_favorite))
-                .perform(click())
-        pressBack()
-
-        sleep_long()
-
-        //Next Match
-        onView(withId(navigation_next_match))
-                .perform(click())
-
-        sleep_long()
-
-        onView(withId(rv_match))
-                .check(matches(isDisplayed()))
-        onView(withId(rv_match))
-                .perform(scrollToPosition<RecyclerView.ViewHolder>(5))
-        onView(withId(rv_match))
-                .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(5,
-                        click()))
-        sleep_short()
-        onView(withId(img_team_away))
-                .check(matches(isDisplayed()))
-        onView(withId(img_team_home))
-                .check(matches(isDisplayed()))
-        onView(withId(add_to_favorite))
-                .perform(click())
-        pressBack()
-
-        sleep_long()
-        //Favorite
-        onView(withId(navigation_favorite))
-                .perform(click())
-
-        sleep_long()
-
-        onView(withId(rv_favorite))
-                .check(matches(isDisplayed()))
-        onView(withId(rv_favorite)).perform(
-                actionOnItemAtPosition<RecyclerView.ViewHolder>(0,
-                        click()))
-        sleep_short()
-        onView(withId(img_team_away))
-                .check(matches(isDisplayed()))
-        onView(withId(img_team_home))
-                .check(matches(isDisplayed()))
-        onView(withId(add_to_favorite))
-                .perform(click())
-        pressBack()
-
-        sleep_long()
-
-    }
-
-    private fun sleep_long() {
-        Thread.sleep(3000)
-    }
-    private fun sleep_short() {
         Thread.sleep(1000)
+
     }
+
 }
