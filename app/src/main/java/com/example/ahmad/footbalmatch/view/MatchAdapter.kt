@@ -1,4 +1,4 @@
-package com.example.ahmad.footbalmatch.view.main
+package com.example.ahmad.footbalmatch.view
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -9,7 +9,6 @@ import com.example.ahmad.footbalmatch.R
 import com.example.ahmad.footbalmatch.data.DateHelper
 import com.example.ahmad.footbalmatch.data.response.Event
 import kotlinx.android.synthetic.main.card_match.view.*
-import org.jetbrains.anko.startActivity
 
 class MatchAdapter(val context: Context?, private val matchList: List<Event>) : RecyclerView.Adapter<MatchAdapter.ClubViewHolder>() {
 
@@ -28,11 +27,13 @@ class MatchAdapter(val context: Context?, private val matchList: List<Event>) : 
     inner class ClubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(event: Event) {
 
-            itemView.tv_tanggal.text = DateHelper.reformatStringDate(event.dateEvent.toString(), DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
-            itemView.tv_home_team.text = event.strHomeTeam
-            itemView.score_team_home.text = event.intHomeScore
-            itemView.score_team_away.text = event.intAwayScore
-            itemView.away_team.text = event.strAwayTeam
+            itemView.apply {
+                tv_tanggal.text = DateHelper.reformatStringDate(event.dateEvent.toString(), DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
+                tv_home_team.text = event.strHomeTeam
+                score_team_home.text = event.intHomeScore
+                score_team_away.text = event.intAwayScore
+                away_team.text = event.strAwayTeam
+            }
 
         }
     }
