@@ -28,12 +28,16 @@ class FavoriteAdapter(val ctx: Context, private val mList: List<FavoriteMatch>):
 
     class FavHolder(v: View): RecyclerView.ViewHolder(v) {
         fun bind(mFav: FavoriteMatch){
-            itemView.tv_tanggal.text = DateHelper.reformatStringDate(mFav.dateEvent,
-                    DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
-            itemView.tv_home_team.text = mFav.homeTeam
-            itemView.away_team.text = mFav.awayTeam
-            itemView.score_team_home.text = mFav.homeScore
-            itemView.score_team_away.text = mFav.awayScore
+
+            itemView.apply {
+                tv_tanggal.text = DateHelper.reformatStringDate(mFav.dateEvent,
+                        DateHelper.DATE_FORMAT_YEAR_FIRST, DateHelper.DATE_FORMAT_FULL_DATE)
+                tv_home_team.text = mFav.homeTeam
+                away_team.text = mFav.awayTeam
+                score_team_home.text = mFav.homeScore
+                score_team_away.text = mFav.awayScore
+            }
+
         }
     }
 
