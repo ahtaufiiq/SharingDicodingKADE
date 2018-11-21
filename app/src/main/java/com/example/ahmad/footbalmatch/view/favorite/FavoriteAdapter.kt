@@ -27,6 +27,7 @@ class FavoriteAdapter(val ctx: Context, private val mList: List<FavoriteMatch>):
     }
 
     class FavHolder(v: View): RecyclerView.ViewHolder(v) {
+
         fun bind(mFav: FavoriteMatch){
 
             itemView.apply {
@@ -39,6 +40,7 @@ class FavoriteAdapter(val ctx: Context, private val mList: List<FavoriteMatch>):
             }
 
         }
+
     }
 
 
