@@ -44,9 +44,12 @@ class NextMatchFragment : Fragment(){
 //        matchLists.add(match)
 //        matchLists.add(match)
 //        matchLists.add(match)
+
         rv_match.layoutManager = LinearLayoutManager(context)
         rv_match.setHasFixedSize(true)
-        rv_match.adapter = MatchAdapter(context, matchLists)
+        rv_match.adapter = MatchAdapter(context, matchLists){
+            //
+        }
 
         val retrofit= RetrofitBuilder.getClient().create(RetrofitService::class.java)
         CompositeDisposable().add(

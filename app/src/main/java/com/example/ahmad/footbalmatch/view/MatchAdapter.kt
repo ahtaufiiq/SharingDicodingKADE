@@ -15,7 +15,7 @@ class MatchAdapter(val context: Context?, private val matchList: List<Event>,  p
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClubViewHolder {
-        return ClubViewHolder(LayoutInflater.from(context).inflate(R.layout.card_match, parent, false))
+        return ClubViewHolder(LayoutInflater.from(context).inflate(R.layout.item_match, parent, false))
     }
 
     override fun getItemCount(): Int = matchList.size

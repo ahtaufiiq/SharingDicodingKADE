@@ -15,7 +15,6 @@ import com.example.ahmad.footbalmatch.data.dbLocal.FavoriteMatch
 import com.example.ahmad.footbalmatch.data.dbLocal.db
 import com.example.ahmad.footbalmatch.data.response.Event
 import com.example.ahmad.footbalmatch.view.MatchAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_match.*
 import kotlinx.android.synthetic.main.item_match.*
 import org.jetbrains.anko.db.*
@@ -101,9 +100,9 @@ class LastMatchFragment : Fragment() ,LastMatchContract.View{
                         FavoriteMatch.HOME_SCORE to event.intHomeScore,
                         FavoriteMatch.AWAY_SCORE to event.intAwayScore)
             }
-            snackbar(viewpager, "Added to favorite").show()
+            snackbar(rv_match, "Added to favorite").show()
         }catch (e: SQLiteConstraintException){
-            snackbar(viewpager, e.localizedMessage).show()
+            snackbar(rv_match, e.localizedMessage).show()
         }
     }
 
